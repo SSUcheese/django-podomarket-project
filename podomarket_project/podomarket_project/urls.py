@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('podomarket.urls')),
     path('', include('allauth.urls')),
     # 이거 설정해두고 기호에 맞게 allauth에서 제공하는 url을 사용하면 된다.
 ]

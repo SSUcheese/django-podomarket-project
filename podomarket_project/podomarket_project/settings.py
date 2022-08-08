@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os, json
+from re import A
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -158,3 +159,7 @@ AUTHENTICATION_BACKENDS = [
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # 인증 이메일 같은 것들이 터미널 콘솔로 들어가게 했다. 나중에 실제 이메일로 발송될 수 있게 바꿀 수 있음
+
+ACCOUNT_SIGNUP_REDIRECT_URL = "index" # 이거 회원가입 성공하면 어디로 보낼건지 정해주는 기능
+LOGIN_REDIRECT_URL = "index"
+ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 누르면 확인절차 없이 바로 로그아웃
