@@ -161,5 +161,11 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # 인증 이메일 같은 것들이 터미널 콘솔로 들어가게 했다. 나중에 실제 이메일로 발송될 수 있게 바꿀 수 있음
 
 ACCOUNT_SIGNUP_REDIRECT_URL = "index" # 이거 회원가입 성공하면 어디로 보낼건지 정해주는 기능
+ACCOUNT_EMAIL_REQUIRED = True # 회원가입 과정에서 이메일 필수로 받음
+ACCOUNT_USERNAME_REQUIRED = False # 회원가입 과정에서 닉네임 필수 아님
+ACCOUNT_AUTHENTICATION_METHOD = "email" # 로그인 과정에서 닉네임 말고 이메일로 로그인한다.
+ACCOUNT_SESSION_REMEMBER = True # 브라우저를 닫아도 유저를 항상 기억하도록 설정
+SESSION_COOKIE_AGE = 3600 # 단위는 초. 따라서 3600으로 설정하면 1시간이 된다. 그래서 1시간 지나면 로그인 필요함
 LOGIN_REDIRECT_URL = "index"
 ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 누르면 확인절차 없이 바로 로그아웃
+ACCOUNT_SIGNUP_FORM_CLASS = 'podomarket.forms.SignupForm'
