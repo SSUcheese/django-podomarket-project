@@ -124,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'UTC'
 
@@ -169,3 +169,9 @@ SESSION_COOKIE_AGE = 3600 # 단위는 초. 따라서 3600으로 설정하면 1�
 LOGIN_REDIRECT_URL = "index"
 ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 누르면 확인절차 없이 바로 로그아웃
 ACCOUNT_SIGNUP_FORM_CLASS = 'podomarket.forms.SignupForm'
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'podomarket.validators.CustomPasswordValidator',
+    },
+]
