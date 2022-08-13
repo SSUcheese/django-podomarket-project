@@ -15,10 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
+from podomarket.views import CustomPasswordChangeView
 
 urlpatterns = [
+    # admin
     path('admin/', admin.site.urls),
+    
+    # podomarket
     path('', include('podomarket.urls')),
+    
+    # allauth urls
+    path('email-confirmation-done/',
+         # 단순히 email 인증 완료를 나타내는 페이지를 만들면 되는 것이기에 그냥 template을 로드한다. 
+         TemplateView.as_view(template_name='podomarket/email_confirmation_done.html'),
+         name='account_email_confirmation_done'),
+    # 아래의 경우를 url 오버라이딩이라 부른다.
+    path('password/change/', CustomPasswordChangeView.as_view(), name='account_change_password'),
     path('', include('allauth.urls')),
     # 이거 설정해두고 기호에 맞게 allauth에서 제공하는 url을 사용하면 된다.
 ]

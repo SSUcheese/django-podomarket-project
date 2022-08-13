@@ -170,6 +170,9 @@ LOGIN_REDIRECT_URL = "index"
 ACCOUNT_LOGOUT_ON_GET = True # 로그아웃 버튼 누르면 확인절차 없이 바로 로그아웃
 ACCOUNT_SIGNUP_FORM_CLASS = 'podomarket.forms.SignupForm'
 ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True # 이메일 인증 링크로 들어가면 이메일 인증 바로 완료
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'account_email_confirmation_done' # 이거는 이메일 인증 페이지로 로그인 안 한 상태로 들어오는 경우
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'account_email_confirmation_done' # 이거는 로그인 완료된 상태로 이메일 인증 페이지로 들어오는 경우
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'podomarket.validators.CustomPasswordValidator',
