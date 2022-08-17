@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
+from django.core.validators import MinValueValidator
 from .validators import validate_no_special_characters
 
 
@@ -31,3 +31,4 @@ class User(AbstractUser):
     
     def __str__(self):
         return self.email # 이거 이메일로 바꿨으니까 tempalte에서 {{user}} 출력하면 이메일로 나온다.
+    
