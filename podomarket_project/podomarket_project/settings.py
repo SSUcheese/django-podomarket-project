@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'podomarket',
     'widget_tweaks', # 템플릿의 폼 필드 렌더링을 조정해서 ccs와 html의 자유로운 속성 변경이 지원된다. 또한 html파일 오버라이딩은 그냥 파일 정해진 경로에 넣으면 된다.
+    'django.contrib.humanize',
 
     'allauth',
     'allauth.account',
