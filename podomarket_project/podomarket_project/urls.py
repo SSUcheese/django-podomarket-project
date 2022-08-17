@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from podomarket.views import CustomPasswordChangeView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # admin
@@ -35,3 +37,6 @@ urlpatterns = [
     path('', include('allauth.urls')),
     # 이거 설정해두고 기호에 맞게 allauth에서 제공하는 url을 사용하면 된다.
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

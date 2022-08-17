@@ -32,3 +32,26 @@ class User(AbstractUser):
     def __str__(self):
         return self.email # 이거 이메일로 바꿨으니까 tempalte에서 {{user}} 출력하면 이메일로 나온다.
     
+class Post(models.Model):
+    title = models.CharField(max_length=10)
+    item_price = models.IntegerField(validators=[MinValueValidator(1)])
+    
+    CONDITION_CHOICES = [
+        ("새제품", "새제품"),
+        ("최상", "최상"),
+        ("상", "상"),
+        ("중", "중"),
+        ("하", "하")
+    ]
+    
+    item_condition = models.CharField(choices= CONDITION_CHOICES, max_length= 10)
+    item_details = models.TextField(blank=True)
+    image1 = models.ImageField()
+    image2 = models.ImageField(blank=True)
+    image3 = models.ImageField(blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    dt_created = models.DateTimeField(auto_now_add=True)
+    dt_updated = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.title
