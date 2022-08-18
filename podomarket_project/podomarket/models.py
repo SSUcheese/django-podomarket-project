@@ -42,7 +42,7 @@ class Post(models.Model):
         ('중', '중'),
         ('하', '하'),
     ]
-    item_condition = models.CharField(max_length=10, choices=CONDITION_CHOICES)
+    item_condition = models.CharField(max_length=10, choices=CONDITION_CHOICES, default=None)
 
     item_details = models.TextField(blank=True)
 
