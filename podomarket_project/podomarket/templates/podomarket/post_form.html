@@ -1,0 +1,56 @@
+{% extends "podomarket_base/base_with_navbar.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}새 게시글 작성 | 포도마켓{% endblock title %}
+
+{% block content %}
+<form class="post-form" method="post" autocomplete="off">
+  {% csrf_token %}
+  <div class="title">
+    <input type="text" name="title" maxlength="60" placeholder="제목" class="podo-input" required id="id_title">
+  </div>
+  <div class="price">
+    <input type="number" name="item_price" placeholder="판매 가격" class="error podo-input" required id="id_item_price">
+    <div class="error-message">1 이상의 값을 입력해 주세요.</div>
+  </div>
+  <div class="condition">
+    <div class="radios">
+      <label for="id_item_condition_0"><input type="radio" name="item_condition" value="새제품" id="id_item_condition_0" required>새제품</label>
+      <label for="id_item_condition_1"><input type="radio" name="item_condition" value="최상" id="id_item_condition_1" required>최상</label>
+      <label for="id_item_condition_2"><input type="radio" name="item_condition" value="상" id="id_item_condition_2" required>상</label>
+      <label for="id_item_condition_3"><input type="radio" name="item_condition" value="중" id="id_item_condition_3" required>중</label>
+      <label for="id_item_condition_4"><input type="radio" name="item_condition" value="하" id="id_item_condition_4" required>하</label>
+    </div>
+  </div>
+  <div class="detail">
+    <textarea name="item_details" cols="40" rows="10" placeholder="상세 정보" class="podo-input" id="id_item_details"></textarea>
+  </div>
+  <div class="file">
+    <div class="podo-input file-input">
+      <div class="file-content">
+        <input type="file" name="image1" accept="image/*" required id="id_image1">
+      </div>
+    </div>
+    <div class="error-message">올바른 이미지를 업로드하세요. 업로드하신 파일은 이미지 파일이 아니거나 파일이 깨져 있습니다.</div>
+  </div>
+  <div class="file">
+    <div class="podo-input file-input">
+      <div class="file-content">
+        <input type="file" name="image2" accept="image/*" id="id_image2">
+      </div>
+    </div>
+  </div>
+  <div class="file">
+    <div class="podo-input file-input">
+      <div class="file-content">
+        <input type="file" name="image3" accept="image/*" id="id_image3">
+      </div>
+    </div>
+  </div>
+  <div class="buttons">
+    <a class="podo-button large secondary cancel" href="#">취소</a>
+    <button class="podo-button large primary submit" type="submit">완료</button>
+  </div>
+</form>
+{% endblock content %}
