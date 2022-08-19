@@ -5,6 +5,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 from .models import User, Post
 from .forms import PostForm
@@ -46,6 +47,14 @@ class PostUpdateView(UpdateView):
     
     def get_success_url(self):
         return reverse("post-detail", kwargs={"post_id":self.object.id})
+    
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name= "podomarket/post_confirm_delete.html"
+    pk_url_kwarg = "post_id"
+    
+    def get_success_url(self) -> str:
+        return reverse("index")
     
 # 비밀번호 변경을 하고 홈펭이지로 리디렉트되게 하는 기능은 settings에서 만질 수 없다.
 # 이를 구현하기 위해선 아래와 같이 allauth의 passwordchangeview를 상속받아서 리디렉트 url을 설정해 주는 get_success_url 메소드를 오버라이드하는 방식으로 접근한다.
