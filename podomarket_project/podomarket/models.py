@@ -53,6 +53,8 @@ class Post(models.Model):
     image3 = models.ImageField(upload_to='item_pics', blank=True)
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    is_sold = models.BooleanField(default=False)
 
     dt_created = models.DateTimeField(auto_now_add=True)
 

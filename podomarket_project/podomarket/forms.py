@@ -16,7 +16,7 @@ class SignupForm(forms.ModelForm):
             user.address = self.cleaned_data['address']
             user.save()
 
-class PostForm(forms.ModelForm):
+class PostCreateForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
@@ -27,6 +27,25 @@ class PostForm(forms.ModelForm):
             "image1",
             "image2",
             "image3",
+        ]
+        widgets = {
+            "item_condition": forms.RadioSelect, # 이렇게 하면 기본값으로 사용되는 select 대신에 radioselect 위젯이 사용된다.
+        }
+        
+# 작성/수정에 따라 사용되는 필드가 달라지는 경우, 각자의 폼 클래스를 만들어 서로 분리해야 한다.
+
+class PostUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = [
+            "title",
+            "item_price",
+            "item_condition",
+            "item_details",
+            "image1",
+            "image2",
+            "image3",
+            "is_sold",
         ]
         widgets = {
             "item_condition": forms.RadioSelect, # 이렇게 하면 기본값으로 사용되는 select 대신에 radioselect 위젯이 사용된다.
